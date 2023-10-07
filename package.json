@@ -35,7 +35,7 @@
   },
   "version": "1.0.0",
   "private": "true",
-  "repository": "https://github.com/viniciuscosmome/modelo-express-ts.git",
+  "repository": "https://github.com/viniciuscosmome/beer-api.git",
   "author": "viniciuscosmome <48590313+viniciuscosmome@users.noreply.github.com>",
   "license": "MIT"
 }

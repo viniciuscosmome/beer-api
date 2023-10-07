@@ -2,7 +2,6 @@ export const authPaths = {
   '/auth/sign-in': {
     post: {
       tags: ['Authentication'],
-      description: 'Parmito o acesso a conta.',
       requestBody: {
         content: {
           'application/json': {
@@ -74,29 +73,6 @@ export const authSchemas = {
   },
   AuthSignInOutput$200: {
     type: 'object',
-    properties: {
-      message: {
-        type: 'string',
-      },
-      token: {
-        type: 'string',
-      },
-      refreshToken: {
-        type: 'string',
-      },
-      user: {
-        type: 'object',
-        properties: {
-          id: {
-            type: 'number',
-            example: '1',
-          },
-          name: {
-            type: 'string',
-            example: 'João',
-          },
-        },
-      },
-    },
+    properties: {},
   },
 };
