@@ -1,0 +1,28 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./data/beer.db"
+}
+
+model credentials {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  password  String
+  updatedAt DateTime   @updatedAt() @map("updated_at")
+  createdAt DateTime   @default(now()) @map("created_at")
+  profiles  profiles[]
+}
+
+model profiles {
+  id           Int         @id @default(autoincrement())
+  firstName    String      @unique
+  lastName     String
+  birthdate    DateTime
+  updatedAt    DateTime    @updatedAt() @map("updated_at")
+  createdAt    DateTime    @default(now()) @map("created_at")
+  credentialId String
+  credential   credentials @relation(fields: [credentialId], references: [id], onDelete: Cascade)
+}
