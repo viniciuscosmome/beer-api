@@ -1,6 +1,7 @@
-import { hash } from 'bcryptjs';
+import { compare, hash } from 'bcryptjs';
 import { UnauthorizedException } from '../../globals/exceptions';
 import { authRepository } from './auth.repository';
+import { ClearCredentialEntity } from './auth.entity';
 
 export const authService = {
   async processNewAccountData(input: iSignUpInput): Promise<void> {
@@ -8,30 +9,31 @@ export const authService = {
 
     const hashedPassword = await hash(password, 10);
 
-    await authRepository.savesNewAccountData({
-      ...input,
-      password: hashedPassword,
-    });
+    await authRepository.savesNewAccountData(
+      {
+        ...input,
+        password: hashedPassword,
+      },
+      'USER',
+    );
 
     return;
   },
 
-  async validatesAccessData(
-    input: iSignInInput,
-  ): Promise<iValidatesAccessDataOutput> {
+  async validatesAccessData(input: iSignInInput): Promise<iCleanCledentials> {
     const { email, password } = input;
 
-    if (email !== 'email@example.com') {
+    const credential = await authRepository.findCredentialByEmail(email);
+    if (!credential) {
       throw new UnauthorizedException();
     }
 
-    if (password !== 'strongW#3') {
+    const isValidPassword = await compare(password, credential.password);
+    if (!isValidPassword) {
       throw new UnauthorizedException();
     }
 
-    return {
-      id: 1,
-      name: 'João',
-    };
+    const info = ClearCredentialEntity.parse(credential);
+    return info;
   },
 };
