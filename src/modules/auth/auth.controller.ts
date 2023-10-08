@@ -14,7 +14,7 @@ export const authController = {
   async signIn(req: Request, res: Response) {
     const input: iSignInInput = SignInEntity.parse(req.body);
 
-    console.log('Sign in', input);
+    await authService.validatesAccessData(input);
 
     return res.status(200).json({ msg: 'OK' });
   },
