@@ -5,6 +5,14 @@ declare type iBaseException = {
   details?: object;
 };
 
+declare type iSignUpInput = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  birthdate: Date;
+};
+
 declare type iSignInInput = {
   email: string;
   password: string;
