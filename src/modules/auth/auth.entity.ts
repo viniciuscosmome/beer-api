@@ -21,9 +21,7 @@ export const SignInEntity = SignUpEntity.pick({
   })
   .required();
 
-export const ClearCredentialEntity = SignUpEntity.pick({
-  password: true,
-}).extend({
+export const ClearCredentialEntity = z.object({
   id: z.string(),
   role: z.object({
     level: z.string(),
