@@ -1,9 +1,5 @@
 import { prismaService } from '../../lib/prisma';
-import { Prisma } from '@prisma/client';
-import {
-  InternalServerErrorException,
-  UnprocessableEntityException,
-} from '../../globals/exceptions';
+import { handleErrors } from '../../globals/errors';
 
 export const authRepository = {
   async savesNewAccountData(input: iSignUpInput) {
@@ -21,15 +17,6 @@ export const authRepository = {
           },
         },
       })
-      .catch((error) => {
-        if (error instanceof Prisma.PrismaClientKnownRequestError) {
-          switch (error.code) {
-            case 'P2002':
-              throw new UnprocessableEntityException();
-          }
-        }
-
-        throw new InternalServerErrorException('Ao criar um registro.');
-      });
+      .catch((error) => handleErrors(error));
   },
 };
