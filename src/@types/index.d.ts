@@ -19,6 +19,14 @@ declare type iSignInInput = {
   remember: boolean;
 };
 
+declare type iFindAccountByEmailOutput = {
+  email: string;
+  password: string;
+  accounts: {
+    firstName: string;
+  } | null;
+} | null;
+
 declare type iValidatesAccessDataOutput = {
   id: number;
   name: string;

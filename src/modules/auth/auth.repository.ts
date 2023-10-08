@@ -8,7 +8,7 @@ export const authRepository = {
         data: {
           email: input.email,
           password: input.password,
-          profiles: {
+          profile: {
             create: {
               firstName: input.firstName,
               lastName: input.lastName,
@@ -18,5 +18,27 @@ export const authRepository = {
         },
       })
       .catch((error) => handleErrors(error));
+  },
+
+  async findAccountByEmail(email: string): Promise<iFindAccountByEmailOutput> {
+    const account = await prismaService.credentials
+      .findUnique({
+        where: {
+          email,
+        },
+        select: {
+          id: true,
+          password: true,
+          profile: {
+            select: {
+              firstName: true,
+            },
+          },
+        },
+      })
+      .then((response) => response)
+      .catch((error) => handleErrors(error));
+
+    return account as iFindAccountByEmailOutput;
   },
 };
