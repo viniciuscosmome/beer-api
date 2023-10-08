@@ -19,7 +19,7 @@ declare type iSignInInput = {
   remember: boolean;
 };
 
-declare type iFindAccountByEmailOutput = {
+declare type iFindCredentialByEmailOutput = {
   email: string;
   password: string;
   accounts: {

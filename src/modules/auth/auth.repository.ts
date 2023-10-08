@@ -20,8 +20,10 @@ export const authRepository = {
       .catch((error) => handleErrors(error));
   },
 
-  async findAccountByEmail(email: string): Promise<iFindAccountByEmailOutput> {
-    const account = await prismaService.credentials
+  async findCredentialByEmail(
+    email: string,
+  ): Promise<iFindCredentialByEmailOutput> {
+    const credential = await prismaService.credentials
       .findUnique({
         where: {
           email,
@@ -39,6 +41,6 @@ export const authRepository = {
       .then((response) => response)
       .catch((error) => handleErrors(error));
 
-    return account as iFindAccountByEmailOutput;
+    return credential as iFindCredentialByEmailOutput;
   },
 };
