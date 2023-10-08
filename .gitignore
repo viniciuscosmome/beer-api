@@ -1,3 +1,5 @@
+prisma/data
+
 # Logs
 logs
 *.log
