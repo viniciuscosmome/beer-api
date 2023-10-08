@@ -7,7 +7,9 @@
     "format": "prettier --config .prettierrc src/**/*.ts --write",
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
-    "test": "vitest"
+    "test": "vitest",
+    "prisma:setup": "npx prisma migrate dev",
+    "prisma:seed": "npx prisma db seed"
   },
   "dependencies": {
     "@prisma/client": "5.4.1",
@@ -36,6 +38,9 @@
     "tsx": "3.13.0",
     "typescript": "5.2.2",
     "vitest": "0.34.6"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "version": "1.0.0",
   "private": "true",
