@@ -8,7 +8,7 @@ export const authController = {
 
     await authService.processNewAccountData(input);
 
-    return res.status(201).json({ msg: 'OK' });
+    return res.status(201).json({ message: 'Conta criada com sucesso' });
   },
 
   async signIn(req: Request, res: Response) {
