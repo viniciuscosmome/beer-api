@@ -8,12 +8,12 @@ datasource db {
 }
 
 model credentials {
-  id        String     @id @default(uuid())
-  email     String     @unique
+  id        String    @id @default(uuid())
+  email     String    @unique
   password  String
-  updatedAt DateTime   @updatedAt() @map("updated_at")
-  createdAt DateTime   @default(now()) @map("created_at")
-  profiles  profiles[]
+  updatedAt DateTime  @updatedAt() @map("updated_at")
+  createdAt DateTime  @default(now()) @map("created_at")
+  profile   profiles?
 }
 
 model profiles {
@@ -23,6 +23,6 @@ model profiles {
   birthdate    DateTime
   updatedAt    DateTime    @updatedAt() @map("updated_at")
   createdAt    DateTime    @default(now()) @map("created_at")
-  credentialId String
+  credentialId String      @unique
   credential   credentials @relation(fields: [credentialId], references: [id], onDelete: Cascade)
 }

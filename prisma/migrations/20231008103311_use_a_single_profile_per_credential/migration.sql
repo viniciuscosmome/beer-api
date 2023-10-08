@@ -24,3 +24,6 @@ CREATE UNIQUE INDEX "credentials_email_key" ON "credentials"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "profiles_firstName_key" ON "profiles"("firstName");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "profiles_credentialId_key" ON "profiles"("credentialId");
