@@ -20,14 +20,19 @@ declare type iSignInInput = {
 };
 
 declare type iFindCredentialByEmailOutput = {
-  email: string;
+  id: string;
   password: string;
-  accounts: {
+  role: {
+    level: string;
+  };
+  profile: {
     firstName: string;
-  } | null;
+  };
 } | null;
 
-declare type iValidatesAccessDataOutput = {
-  id: number;
-  name: string;
-};
+declare type iCleanCledentials = Pick<
+  iFindCredentialByEmailOutput,
+  'id' | 'profile' | 'role'
+>;
+
+declare type iRoleLevels = 'USER' | 'ADMIN';

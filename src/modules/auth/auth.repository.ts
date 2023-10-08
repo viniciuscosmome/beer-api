@@ -2,12 +2,17 @@ import { prismaService } from '../../lib/prisma';
 import { handleErrors } from '../../globals/errors';
 
 export const authRepository = {
-  async savesNewAccountData(input: iSignUpInput) {
+  async savesNewAccountData(input: iSignUpInput, level: iRoleLevels) {
     await prismaService.credentials
       .create({
         data: {
           email: input.email,
           password: input.password,
+          role: {
+            connect: {
+              level,
+            },
+          },
           profile: {
             create: {
               firstName: input.firstName,
@@ -31,6 +36,11 @@ export const authRepository = {
         select: {
           id: true,
           password: true,
+          role: {
+            select: {
+              level: true,
+            },
+          },
           profile: {
             select: {
               firstName: true,
