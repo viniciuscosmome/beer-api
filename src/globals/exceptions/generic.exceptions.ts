@@ -60,7 +60,8 @@ export class UnprocessableEntityException extends BaseException {
     super({
       code: 422,
       error: 'Unprocessable Entity',
-      message: message || 'Entendemos sua requisição, mas não iremos prosseguir.',
+      message:
+        message || 'Entendemos sua requisição, mas não iremos prosseguir.',
     });
   }
 }

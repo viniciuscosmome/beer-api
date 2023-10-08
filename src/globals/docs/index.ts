@@ -3,7 +3,11 @@
  * https://swagger.io/specification/v3/
  */
 import { SwaggerUiOptions } from 'swagger-ui-express';
-import { APP_LICENSE, APP_LICENSE_URL, APP_TITLE } from '../../globals/constants';
+import {
+  APP_LICENSE,
+  APP_LICENSE_URL,
+  APP_TITLE,
+} from '../../globals/constants';
 import { exceptionsSchemas } from './exceptions.docs';
 import { authPaths, authSchemas } from './auth.docs';
 

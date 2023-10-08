@@ -7,15 +7,17 @@ describe('Authentication Services', () => {
   describe('Validates acess data', () => {
     describe('Happy', () => {
       test('Correct email and password are passed. Must return user data:', async () => {
-        await authService.validatesAccessData(signInSuccessInputStub).then((actual) => {
-          assertType<object>(actual);
+        await authService
+          .validatesAccessData(signInSuccessInputStub)
+          .then((actual) => {
+            assertType<object>(actual);
 
-          assertType<number>(actual.id);
-          expect(actual.id).greaterThanOrEqual(1);
+            assertType<number>(actual.id);
+            expect(actual.id).greaterThanOrEqual(1);
 
-          assertType<string>(actual.name);
-          expect(actual.name.length).greaterThanOrEqual(3);
-        });
+            assertType<string>(actual.name);
+            expect(actual.name.length).greaterThanOrEqual(3);
+          });
       });
     });
 
@@ -38,10 +40,12 @@ describe('Authentication Services', () => {
       });
 
       test('Provides the correct email, but a wrong password. Should return an error (401):', async () => {
-        await authService.validatesAccessData(passwordErrStub).catch((actual) => {
-          expect(actual).toBeInstanceOf(BaseException);
-          expect(actual.code).toBe(401);
-        });
+        await authService
+          .validatesAccessData(passwordErrStub)
+          .catch((actual) => {
+            expect(actual).toBeInstanceOf(BaseException);
+            expect(actual.code).toBe(401);
+          });
       });
     });
   });
