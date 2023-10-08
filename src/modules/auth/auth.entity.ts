@@ -20,3 +20,15 @@ export const SignInEntity = SignUpEntity.pick({
     remember: z.boolean(),
   })
   .required();
+
+export const ClearCredentialEntity = SignUpEntity.pick({
+  password: true,
+}).extend({
+  id: z.string(),
+  role: z.object({
+    level: z.string(),
+  }),
+  profile: SignUpEntity.pick({
+    firstName: true,
+  }),
+});
