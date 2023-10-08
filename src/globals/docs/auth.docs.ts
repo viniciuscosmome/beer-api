@@ -1,22 +1,22 @@
 export const authPaths = {
-  '/auth/sign-in': {
+  '/auth/sign-up': {
     post: {
       tags: ['Authentication'],
       requestBody: {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/components/schemas/AuthSignInInput',
+              $ref: '#/components/schemas/auth:sign-up:input',
             },
           },
         },
       },
       responses: {
-        '200': {
+        '201': {
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/AuthSignInOutput$200',
+                $ref: '#/components/schemas/auth:sign-up:output',
               },
             },
           },
@@ -39,6 +39,15 @@ export const authPaths = {
             },
           },
         },
+        '422': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$422',
+              },
+            },
+          },
+        },
         '500': {
           content: {
             'application/json': {
@@ -54,7 +63,7 @@ export const authPaths = {
 };
 
 export const authSchemas = {
-  AuthSignInInput: {
+  'auth:sign-up:input': {
     type: 'object',
     properties: {
       email: {
@@ -65,14 +74,27 @@ export const authSchemas = {
         type: 'string',
         example: 'strongW#3',
       },
-      remember: {
-        type: 'boolear',
-        example: false,
+      firstName: {
+        type: 'string',
+        example: 'João',
+      },
+      lastName: {
+        type: 'string',
+        example: 'Silva',
+      },
+      birthdate: {
+        type: 'date',
+        example: '1990-12-31',
       },
     },
   },
-  AuthSignInOutput$200: {
+  'auth:sign-up:output': {
     type: 'object',
-    properties: {},
+    properties: {
+      message: {
+        type: 'string',
+        example: 'Conta criada com sucesso!',
+      },
+    },
   },
 };
