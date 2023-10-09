@@ -30,9 +30,24 @@ declare type iFindCredentialByEmailOutput = {
   };
 } | null;
 
-declare type iCleanCledentials = Pick<
-  iFindCredentialByEmailOutput,
-  'id' | 'profile' | 'role'
->;
+declare type iCleanCledentials = {
+  id: string;
+  role: {
+    level: string;
+  };
+  profile: {
+    firstName: string;
+  };
+};
+
+declare type iCreateTokensInput = {
+  id: string;
+  roleLevel: string;
+};
+
+declare type iSessionTokens = {
+  accessToken: string;
+  refreshToken: string;
+};
 
 declare type iRoleLevels = 'USER' | 'ADMIN';
