@@ -7,25 +7,24 @@ const getAutorizationFromHeaders = z.object({
   authorization: z.string().transform((data) => data.split(' ')),
 });
 
-export const accessTokenCheck = (
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) => {
-  const [bearer, token] = getAutorizationFromHeaders.parse(
-    req.headers,
-  ).authorization;
+export const authorization = (subject: iTokensSubject) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const [bearer, token] = getAutorizationFromHeaders.parse(
+      req.headers,
+    ).authorization;
 
-  if (!bearer || bearer !== 'Bearer') {
-    throw new InvalidTokenException();
-  }
+    if (!bearer || bearer !== 'Bearer' || !token) {
+      throw new InvalidTokenException();
+    }
 
-  const response = checkToken<iAccessTokenCheckerOutput>(token, 'ACCESS');
+    const response = checkToken<iAccessTokenCheckerOutput>(token, subject);
 
-  req.verifiedCredentials = {
-    id: response.id,
-    roleLevel: response.roleLevel,
+    req.verifiedCredentials = {
+      id: response.id,
+      roleLevel: response.roleLevel,
+      jwtid: response.jti,
+    };
+
+    return next();
   };
-
-  return next();
 };
