@@ -23,7 +23,7 @@ declare type iFindCredentialByEmailOutput = {
   id: string;
   password: string;
   role: {
-    level: string;
+    level: iRoleLevels;
   };
   profile: {
     firstName: string;
@@ -51,3 +51,10 @@ declare type iSessionTokens = {
 };
 
 declare type iRoleLevels = 'USER' | 'ADMIN';
+
+declare type iTokensSubject = 'ACCESS' | 'REFRESH';
+
+declare type iAccessTokenCheckerOutput = {
+  id: string;
+  roleLevel: iRoleLevels;
+};
