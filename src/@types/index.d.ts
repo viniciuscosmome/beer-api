@@ -59,3 +59,15 @@ declare type iAccessTokenCheckerOutput = {
   roleLevel: iRoleLevels;
   jti?: string;
 };
+
+declare type iVerifiedCredentials = Pick<
+  iAccessTokenCheckerOutput,
+  'id' | 'roleLevel'
+> & {
+  jwtid?: string;
+};
+
+declare type iFindCredentialByIdOutput = {
+  id: string;
+  roleLevel: iRoleLevels;
+};
