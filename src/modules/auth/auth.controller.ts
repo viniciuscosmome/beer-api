@@ -14,8 +14,13 @@ export const authController = {
   async signIn(req: Request, res: Response) {
     const input: iSignInInput = SignInEntity.parse(req.body);
 
-    await authService.validatesAccessData(input);
+    const info: iCleanCledentials =
+      await authService.validatesAccessData(input);
+    const session: iSessionTokens = await authService.createTokens({
+      id: info.id,
+      roleLevel: info.role.level,
+    });
 
-    return res.status(200).json({ message: 'Acesso permitido' });
+    return res.status(200).json({ message: 'Acesso permitido', ...session });
   },
 };
