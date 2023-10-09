@@ -3,6 +3,7 @@ declare namespace Express {
     verifiedCredentials?: {
       id: string;
       roleLevel: string;
+      jwtid?: string;
     };
   }
 }

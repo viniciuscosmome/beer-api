@@ -57,4 +57,5 @@ declare type iTokensSubject = 'ACCESS' | 'REFRESH';
 declare type iAccessTokenCheckerOutput = {
   id: string;
   roleLevel: iRoleLevels;
+  jti?: string;
 };
