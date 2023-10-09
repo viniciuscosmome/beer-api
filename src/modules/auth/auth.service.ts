@@ -2,7 +2,7 @@ import { compare, hash } from 'bcryptjs';
 import { UnauthorizedException } from '../../globals/exceptions';
 import { authRepository } from './auth.repository';
 import { ClearCredentialEntity } from './auth.entity';
-import { genAccessToken, genRefreshToken } from '../../globals/utilities';
+import { genAccessToken, genRefreshToken } from '../../lib/jwt';
 
 export const authService = {
   async processNewAccountData(input: iSignUpInput): Promise<void> {
