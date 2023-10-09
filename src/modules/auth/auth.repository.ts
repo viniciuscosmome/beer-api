@@ -53,4 +53,32 @@ export const authRepository = {
 
     return credential as iFindCredentialByEmailOutput;
   },
+
+  async findCredentialById(id: string): Promise<iFindCredentialByIdOutput> {
+    const credential = await prismaService.credentials
+      .findUnique({
+        where: {
+          id,
+        },
+        select: {
+          id: true,
+          role: {
+            select: {
+              level: true,
+            },
+          },
+        },
+      })
+      .then((response) => {
+        if (response) {
+          return {
+            id: response.id,
+            roleLevel: response.role.level,
+          };
+        }
+      })
+      .catch((error) => handleErrors(error));
+
+    return credential as iFindCredentialByIdOutput;
+  },
 };
