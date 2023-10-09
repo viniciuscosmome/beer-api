@@ -1,5 +1,5 @@
 import { randomUUID } from 'node:crypto';
-import jwt from 'jsonwebtoken';
+import jwt, { SignOptions } from 'jsonwebtoken';
 import { SECRET_SESS } from '../globals/constants';
 import { handleErrors } from '../globals/errors';
 
@@ -27,22 +27,21 @@ export const checkToken = <Excpected = object>(
   return result;
 };
 
-export const genAccessToken = (payload: object): string => {
-  const token = jwt.sign(payload, SECRET_SESS, {
+export const genJwtToken = (payload: object, isRefresh = false): string => {
+  const signOptions: SignOptions = {
     expiresIn: '1h',
     subject: 'ACCESS',
-  });
+  };
 
-  return token;
-};
+  if (isRefresh) {
+    const jwtid = randomUUID();
 
-export const genRefreshToken = (payload: object): string => {
-  const jwtid = randomUUID();
-  const token = jwt.sign(payload, SECRET_SESS, {
-    expiresIn: '3h',
-    jwtid: jwtid,
-    subject: 'REFRESH',
-  });
+    signOptions.expiresIn = '3h';
+    signOptions.jwtid = jwtid;
+    signOptions.subject = 'REFRESH';
+  }
+
+  const token = jwt.sign(payload, SECRET_SESS, signOptions);
 
   return token;
 };

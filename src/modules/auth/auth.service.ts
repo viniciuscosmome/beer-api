@@ -2,7 +2,7 @@ import { compare, hash } from 'bcryptjs';
 import { UnauthorizedException } from '../../globals/exceptions';
 import { authRepository } from './auth.repository';
 import { ClearCredentialEntity } from './auth.entity';
-import { genAccessToken, genRefreshToken } from '../../lib/jwt';
+import { genJwtToken } from '../../lib/jwt';
 
 export const authService = {
   async processNewAccountData(input: iSignUpInput): Promise<void> {
@@ -39,8 +39,8 @@ export const authService = {
   },
 
   async createTokens(input: iCreateTokensInput): Promise<iSessionTokens> {
-    const accessToken = genAccessToken(input);
-    const refreshToken = genRefreshToken({ id: input.id });
+    const accessToken = genJwtToken(input);
+    const refreshToken = genJwtToken(input, true);
 
     return {
       accessToken,
