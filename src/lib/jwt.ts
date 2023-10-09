@@ -36,7 +36,8 @@ export const genJwtToken = (payload: object, isRefresh = false): string => {
   if (isRefresh) {
     const jwtid = randomUUID();
 
-    signOptions.expiresIn = '3h';
+    signOptions.notBefore = '50m';
+    signOptions.expiresIn = '2h';
     signOptions.jwtid = jwtid;
     signOptions.subject = 'REFRESH';
   }
