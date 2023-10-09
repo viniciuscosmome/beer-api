@@ -28,25 +28,3 @@ export const authorization = (subject: iTokensSubject) => {
     return next();
   };
 };
-
-export const authorization = (subject: iTokensSubject) => {
-  return (req: Request, res: Response, next: NextFunction) => {
-    const [bearer, token] = getAutorizationFromHeaders.parse(
-      req.headers,
-    ).authorization;
-
-    if (!bearer || bearer !== 'Bearer') {
-      throw new InvalidTokenException();
-    }
-
-    const response = checkToken<iAccessTokenCheckerOutput>(token, subject);
-
-    req.verifiedCredentials = {
-      id: response.id,
-      roleLevel: response.roleLevel,
-      jwtid: response.jti,
-    };
-
-    return next();
-  };
-};
