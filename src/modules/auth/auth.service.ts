@@ -38,6 +38,18 @@ export const authService = {
     return info;
   },
 
+  async updateAccessTokenPayload(
+    id: string,
+  ): Promise<iFindCredentialByIdOutput> {
+    const payload = await authRepository.findCredentialById(id);
+
+    if (!payload) {
+      throw new UnauthorizedException();
+    }
+
+    return payload;
+  },
+
   async createTokens(input: iCreateTokensInput): Promise<iSessionTokens> {
     const accessToken = genJwtToken(input);
     const refreshToken = genJwtToken(input, true);

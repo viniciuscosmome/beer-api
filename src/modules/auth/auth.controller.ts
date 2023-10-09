@@ -23,4 +23,17 @@ export const authController = {
 
     return res.status(200).json({ message: 'Acesso permitido', ...session });
   },
+
+  async refresh(req: Request, res: Response) {
+    const verifiedCredentials = req.verifiedCredentials as iVerifiedCredentials;
+
+    const info = await authService.updateAccessTokenPayload(
+      verifiedCredentials.id,
+    );
+    const session = await authService.createTokens(info);
+
+    return res
+      .status(200)
+      .json({ message: 'Dados da sessão atualizados', ...session });
+  },
 };
