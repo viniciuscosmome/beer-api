@@ -16,7 +16,7 @@ export const accessTokenCheck = (
     req.headers,
   ).authorization;
 
-  if (bearer && bearer !== 'Bearer') {
+  if (!bearer || bearer !== 'Bearer') {
     throw new InvalidTokenException();
   }
 
