@@ -82,4 +82,20 @@ export const authRepository = {
 
     return credential as iAccountInfo;
   },
+
+  async getCredentialIdByEmail(email: string): Promise<string> {
+    const result = await prismaService.credentials
+      .findUnique({
+        where: {
+          email,
+        },
+        select: {
+          id: true,
+        },
+      })
+      .then((result) => result?.id)
+      .catch((error) => handleErrors(error));
+
+    return result as string;
+  },
 };
