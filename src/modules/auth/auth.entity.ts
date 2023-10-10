@@ -8,7 +8,7 @@ export const SignUpEntity = z
     password: z.string().regex(PASSWORD_REGEX),
     firstName: z.string(),
     lastName: z.string(),
-    birthdate: z.coerce.date().max(ageLimit(14)),
+    birthdate: z.coerce.date().max(ageLimit(18)),
   })
   .required();
 
