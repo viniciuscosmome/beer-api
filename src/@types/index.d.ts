@@ -71,3 +71,8 @@ declare type iFindCredentialByIdOutput = {
   id: string;
   roleLevel: iRoleLevels;
 };
+
+declare type iSignInOutput = {
+  id: string;
+  roleLevel: string;
+};

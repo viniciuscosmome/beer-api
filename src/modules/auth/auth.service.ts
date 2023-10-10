@@ -1,7 +1,6 @@
 import { compare, hash } from 'bcryptjs';
 import { UnauthorizedException } from '../../globals/exceptions';
 import { authRepository } from './auth.repository';
-import { ClearCredentialEntity } from './auth.entity';
 import { genJwtToken } from '../../lib/jwt';
 
 export const authService = {
@@ -21,7 +20,7 @@ export const authService = {
     return;
   },
 
-  async validatesAccessData(input: iSignInInput): Promise<iCleanCledentials> {
+  async validatesAccessData(input: iSignInInput): Promise<iSignInOutput> {
     const { email, password } = input;
 
     const credential = await authRepository.findCredentialByEmail(email);
@@ -34,8 +33,10 @@ export const authService = {
       throw new UnauthorizedException();
     }
 
-    const info = ClearCredentialEntity.parse(credential);
-    return info;
+    return {
+      id: credential.id,
+      roleLevel: credential.role.level,
+    };
   },
 
   async updateAccessTokenPayload(

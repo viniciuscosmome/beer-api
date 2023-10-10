@@ -20,13 +20,3 @@ export const SignInEntity = SignUpEntity.pick({
     remember: z.boolean(),
   })
   .required();
-
-export const ClearCredentialEntity = z.object({
-  id: z.string(),
-  role: z.object({
-    level: z.string(),
-  }),
-  profile: SignUpEntity.pick({
-    firstName: true,
-  }),
-});
