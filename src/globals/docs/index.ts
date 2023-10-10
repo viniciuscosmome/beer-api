@@ -28,16 +28,29 @@ export const docs = {
     ...authPaths,
   },
   components: {
-    securitySchemes: {
-      bearerAuth: {
-        type: 'http',
-        scheme: 'bearer',
-        description: 'O `token` é obtido ao realizar o `sign-in`.',
-      },
-    },
     schemas: {
       ...authSchemas,
       ...exceptionsSchemas,
+    },
+    securitySchemes: {
+      BearerAccess: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'authorization',
+        in: 'header',
+        description:
+          'Use o `accessToken`, ele é obtido ao realizar o `sign-in`.',
+      },
+      BearerRefresh: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'authorization',
+        in: 'header',
+        description:
+          'Use o `refreshToken`, ele é obtido ao realizar o `sign-in`.',
+      },
     },
   },
 };
