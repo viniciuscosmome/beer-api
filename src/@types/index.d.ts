@@ -1,5 +1,5 @@
 declare type iRoleLevels = 'USER' | 'ADMIN';
-declare type iTokensSubject = 'ACCESS' | 'REFRESH';
+declare type iTokensSubject = 'ACCESS' | 'REFRESH' | 'FORGOT_PASSWORD';
 declare type iBaseException = {
   code: number;
   error: string;
