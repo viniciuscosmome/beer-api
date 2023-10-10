@@ -49,13 +49,22 @@ export const authService = {
     return payload;
   },
 
-  async createTokens(input: iAccountInfo): Promise<iSessionProps> {
-    const accessToken = genJwtToken(input);
-    const refreshToken = genJwtToken(input, true);
+  async createSessionTokens(input: iAccountInfo): Promise<iSessionProps> {
+    const accessToken = genJwtToken(input, 'ACCESS');
+    const refreshToken = genJwtToken(input, 'REFRESH');
 
     return {
       accessToken,
       refreshToken,
     };
+  },
+
+  async forgotPassword(email: string): Promise<string | void> {
+    const id = await authRepository.getCredentialIdByEmail(email);
+
+    if (!id) return;
+
+    const token = genJwtToken({ id }, 'FORGOT_PASSWORD');
+    return token;
   },
 };
