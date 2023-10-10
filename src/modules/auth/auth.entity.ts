@@ -20,3 +20,7 @@ export const SignInEntity = SignUpEntity.pick({
     remember: z.boolean(),
   })
   .required();
+
+export const ForgotPasswordEntity = SignUpEntity.pick({
+  email: true,
+}).required();
