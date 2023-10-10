@@ -1,3 +1,5 @@
+declare type iRoleLevels = 'USER' | 'ADMIN';
+declare type iTokensSubject = 'ACCESS' | 'REFRESH';
 declare type iBaseException = {
   code: number;
   error: string;
@@ -19,60 +21,21 @@ declare type iSignInInput = {
   remember: boolean;
 };
 
-declare type iFindCredentialByEmailOutput = {
-  id: string;
-  password: string;
-  role: {
-    level: iRoleLevels;
-  };
-  profile: {
-    firstName: string;
-  };
-} | null;
-
-declare type iCleanCledentials = {
-  id: string;
-  role: {
-    level: string;
-  };
-  profile: {
-    firstName: string;
-  };
-};
-
-declare type iCreateTokensInput = {
-  id: string;
-  roleLevel: string;
-};
-
-declare type iSessionTokens = {
+declare type iSessionProps = {
   accessToken: string;
   refreshToken: string;
 };
 
-declare type iRoleLevels = 'USER' | 'ADMIN';
-
-declare type iTokensSubject = 'ACCESS' | 'REFRESH';
-
-declare type iAccessTokenCheckerOutput = {
+declare type iAccountInfo = {
   id: string;
-  roleLevel: iRoleLevels;
+  roleLevel: iRoleLevels | string;
+};
+
+declare type iFindCredential = iAccountInfo & {
+  password: string;
+};
+
+declare type iJwtProps = iAccountInfo & {
   jti?: string;
-};
-
-declare type iVerifiedCredentials = Pick<
-  iAccessTokenCheckerOutput,
-  'id' | 'roleLevel'
-> & {
   jwtid?: string;
-};
-
-declare type iFindCredentialByIdOutput = {
-  id: string;
-  roleLevel: iRoleLevels;
-};
-
-declare type iSignInOutput = {
-  id: string;
-  roleLevel: string;
 };

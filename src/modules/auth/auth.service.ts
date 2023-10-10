@@ -20,7 +20,7 @@ export const authService = {
     return;
   },
 
-  async validatesAccessData(input: iSignInInput): Promise<iSignInOutput> {
+  async validatesAccessData(input: iSignInInput): Promise<iAccountInfo> {
     const { email, password } = input;
 
     const credential = await authRepository.findCredentialByEmail(email);
@@ -35,13 +35,11 @@ export const authService = {
 
     return {
       id: credential.id,
-      roleLevel: credential.role.level,
+      roleLevel: credential.roleLevel,
     };
   },
 
-  async updateAccessTokenPayload(
-    id: string,
-  ): Promise<iFindCredentialByIdOutput> {
+  async updateAccessTokenPayload(id: string): Promise<iAccountInfo> {
     const payload = await authRepository.findCredentialById(id);
 
     if (!payload) {
@@ -51,7 +49,7 @@ export const authService = {
     return payload;
   },
 
-  async createTokens(input: iCreateTokensInput): Promise<iSessionTokens> {
+  async createTokens(input: iAccountInfo): Promise<iSessionProps> {
     const accessToken = genJwtToken(input);
     const refreshToken = genJwtToken(input, true);
 

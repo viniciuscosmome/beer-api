@@ -21,7 +21,7 @@ export const authController = {
   },
 
   async refresh(req: Request, res: Response) {
-    const { id } = req.verifiedCredentials as iVerifiedCredentials;
+    const { id } = req.verifiedCredentials as iJwtProps;
 
     const info = await authService.updateAccessTokenPayload(id);
     const session = await authService.createTokens(info);

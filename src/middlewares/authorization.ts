@@ -17,7 +17,7 @@ export const authorization = (subject: iTokensSubject) => {
       throw new InvalidTokenException();
     }
 
-    const response = checkToken<iAccessTokenCheckerOutput>(token, subject);
+    const response = checkToken<iJwtProps>(token, subject);
 
     req.verifiedCredentials = {
       id: response.id,

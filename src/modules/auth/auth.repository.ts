@@ -25,9 +25,7 @@ export const authRepository = {
       .catch((error) => handleErrors(error));
   },
 
-  async findCredentialByEmail(
-    email: string,
-  ): Promise<iFindCredentialByEmailOutput> {
+  async findCredentialByEmail(email: string): Promise<iFindCredential> {
     const credential = await prismaService.credentials
       .findUnique({
         where: {
@@ -41,20 +39,23 @@ export const authRepository = {
               level: true,
             },
           },
-          profile: {
-            select: {
-              firstName: true,
-            },
-          },
         },
       })
-      .then((response) => response)
+      .then((response) => {
+        if (response) {
+          return {
+            id: response.id,
+            password: response.password,
+            roleLevel: response.role.level,
+          };
+        }
+      })
       .catch((error) => handleErrors(error));
 
-    return credential as iFindCredentialByEmailOutput;
+    return credential as iFindCredential;
   },
 
-  async findCredentialById(id: string): Promise<iFindCredentialByIdOutput> {
+  async findCredentialById(id: string): Promise<iAccountInfo> {
     const credential = await prismaService.credentials
       .findUnique({
         where: {
@@ -79,6 +80,6 @@ export const authRepository = {
       })
       .catch((error) => handleErrors(error));
 
-    return credential as iFindCredentialByIdOutput;
+    return credential as iAccountInfo;
   },
 };
