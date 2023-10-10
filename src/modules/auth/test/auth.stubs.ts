@@ -1,5 +1,6 @@
-export const signInSuccessInputStub: iSignInInput = {
-  email: 'email@example.com',
-  password: 'strongW#3',
-  remember: false,
+import { randomUUID } from 'crypto';
+
+export const tokenPayload: iAccountInfo = {
+  id: randomUUID(),
+  roleLevel: 'USER',
 };

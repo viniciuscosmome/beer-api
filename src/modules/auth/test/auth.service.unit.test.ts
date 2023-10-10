@@ -1,52 +1,31 @@
-import { assertType, describe, expect, test } from 'vitest';
+import { assertType, describe, expect, it } from 'vitest';
 import { authService } from '../auth.service';
-import { signInSuccessInputStub } from './auth.stubs';
-import { BaseException } from '../../../globals/exceptions';
+import { tokenPayload } from './auth.stubs';
 
 describe('Authentication Services', () => {
-  describe('Validates acess data', () => {
-    describe('Happy', () => {
-      test('Correct email and password are passed. Must return user data:', async () => {
-        await authService
-          .validatesAccessData(signInSuccessInputStub)
-          .then((actual) => {
-            assertType<object>(actual);
+  describe('Happy', () => {
+    it('Create session tokens', async () => {
+      const { accessToken, refreshToken } =
+        await authService.createTokens(tokenPayload);
 
-            assertType<number>(actual.id);
-            expect(actual.id).greaterThanOrEqual(1);
+      expect(accessToken).toString();
+      expect(refreshToken).toString();
 
-            assertType<string>(actual.name);
-            expect(actual.name.length).greaterThanOrEqual(3);
-          });
-      });
-    });
+      const accessPayloadFromToken = accessToken.split('.')[1];
+      const accessPayload = JSON.parse(atob(accessPayloadFromToken));
 
-    describe('Unhappy', () => {
-      const emailErrStub = {
-        ...signInSuccessInputStub,
-        email: 'random@example.com',
-      };
+      assertType<object>(accessPayload);
+      expect(accessPayload.id).toString();
+      expect(accessPayload.roleLevel).toString();
+      expect(accessPayload.sub).toStrictEqual('ACCESS');
 
-      const passwordErrStub = {
-        ...signInSuccessInputStub,
-        password: 'random',
-      };
+      const refreshPayloadFromToken = refreshToken.split('.')[1];
+      const refreshPayload = JSON.parse(atob(refreshPayloadFromToken));
 
-      test('An unregistered email is sent. It should return an error (401):', async () => {
-        await authService.validatesAccessData(emailErrStub).catch((actual) => {
-          expect(actual).toBeInstanceOf(BaseException);
-          expect(actual.code).toBe(401);
-        });
-      });
-
-      test('Provides the correct email, but a wrong password. Should return an error (401):', async () => {
-        await authService
-          .validatesAccessData(passwordErrStub)
-          .catch((actual) => {
-            expect(actual).toBeInstanceOf(BaseException);
-            expect(actual.code).toBe(401);
-          });
-      });
+      assertType<object>(refreshPayload);
+      expect(refreshPayload.id).toString();
+      expect(refreshPayload.roleLevel).toString();
+      expect(refreshPayload.sub).toStrictEqual('REFRESH');
     });
   });
 });
