@@ -2,6 +2,7 @@ export const authPaths = {
   '/auth/sign-up': {
     post: {
       tags: ['Authentication'],
+      summary: 'Cria uma conta se o e-mail ainda não foi usado.',
       requestBody: {
         content: {
           'application/json': {
@@ -63,6 +64,7 @@ export const authPaths = {
   '/auth/sign-in': {
     post: {
       tags: ['Authentication'],
+      summary: 'Acessa a conta e retorna as chaves de acesso.',
       requestBody: {
         content: {
           'application/json': {
@@ -123,12 +125,13 @@ export const authPaths = {
   },
   '/auth/refresh': {
     post: {
+      tags: ['Authentication'],
+      summary: 'Atualiza as chaves de acesso.',
       security: [
         {
           BearerRefresh: [],
         },
       ],
-      tags: ['Authentication'],
       requestBody: {},
       responses: {
         '200': {
