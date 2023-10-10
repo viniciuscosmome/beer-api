@@ -121,6 +121,55 @@ export const authPaths = {
       },
     },
   },
+  '/auth/refresh': {
+    post: {
+      security: [
+        {
+          BearerRefresh: [],
+        },
+      ],
+      tags: ['Authentication'],
+      requestBody: {},
+      responses: {
+        '200': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/auth:refresh:output',
+              },
+            },
+          },
+        },
+        '400': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$400',
+              },
+            },
+          },
+        },
+        '401': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$401',
+              },
+            },
+          },
+        },
+        '500': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$500',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };
 
 export const authSchemas = {
@@ -181,6 +230,21 @@ export const authSchemas = {
       message: {
         type: 'string',
         example: 'Acesso permitido',
+      },
+      accessToken: {
+        type: 'string',
+      },
+      refreshToken: {
+        type: 'string',
+      },
+    },
+  },
+  'auth:refresh:output': {
+    type: 'object',
+    properties: {
+      message: {
+        type: 'string',
+        example: 'Dados da sessão atualizados',
       },
       accessToken: {
         type: 'string',
