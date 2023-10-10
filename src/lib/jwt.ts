@@ -27,22 +27,30 @@ export const checkToken = <Excpected = object>(
   return result;
 };
 
-export const genJwtToken = (payload: object, isRefresh = false): string => {
+export const genJwtToken = (
+  payload: object,
+  subject: iTokensSubject,
+): string => {
   const signOptions: SignOptions = {
-    expiresIn: '1h',
-    subject: 'ACCESS',
+    subject: subject,
   };
 
-  if (isRefresh) {
+  if (subject === 'ACCESS') {
+    signOptions.expiresIn = '1h';
+  }
+
+  if (subject === 'REFRESH') {
     const jwtid = randomUUID();
 
     signOptions.notBefore = '50m';
     signOptions.expiresIn = '2h';
     signOptions.jwtid = jwtid;
-    signOptions.subject = 'REFRESH';
+  }
+
+  if (subject === 'FORGOT_PASSWORD') {
+    signOptions.expiresIn = '5m';
   }
 
   const token = jwt.sign(payload, SECRET_SESS, signOptions);
-
   return token;
 };
