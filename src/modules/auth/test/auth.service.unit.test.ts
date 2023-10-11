@@ -6,7 +6,7 @@ describe('Authentication Services', () => {
   describe('Happy', () => {
     it('Create session tokens', async () => {
       const { accessToken, refreshToken } =
-        await authService.createTokens(tokenPayload);
+        await authService.createSessionTokens(tokenPayload);
 
       expect(accessToken).toString();
       expect(refreshToken).toString();
