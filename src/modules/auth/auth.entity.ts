@@ -24,3 +24,7 @@ export const SignInEntity = SignUpEntity.pick({
 export const ForgotPasswordEntity = SignUpEntity.pick({
   email: true,
 }).required();
+
+export const SetPasswordEntity = SignUpEntity.pick({
+  password: true,
+}).required();

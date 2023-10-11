@@ -2,12 +2,13 @@ import { compare, hash } from 'bcryptjs';
 import { UnauthorizedException } from '../../globals/exceptions';
 import { authRepository } from './auth.repository';
 import { genJwtToken } from '../../lib/jwt';
+import { PASSWORD_SALT } from '../../globals/constants';
 
 export const authService = {
   async processNewAccountData(input: iSignUpInput): Promise<void> {
     const { password } = input;
 
-    const hashedPassword = await hash(password, 10);
+    const hashedPassword = await hash(password, PASSWORD_SALT);
 
     await authRepository.savesNewAccountData(
       {
@@ -66,5 +67,20 @@ export const authService = {
 
     const token = genJwtToken({ id }, 'FORGOT_PASSWORD');
     return token;
+  },
+
+  async processTheNewPassword(input: iUpdatePasswordProps): Promise<void> {
+    const { id, password, tokenActivatedAt } = input;
+
+    const hashedPassword = await hash(password, PASSWORD_SALT);
+    const activatedAt = new Date((tokenActivatedAt as number) * 1e3);
+
+    await authRepository.updatePassword({
+      id,
+      password: hashedPassword,
+      tokenActivatedAt: activatedAt,
+    });
+
+    return;
   },
 };

@@ -98,4 +98,22 @@ export const authRepository = {
 
     return result as string;
   },
+
+  async updatePassword(input: iUpdatePasswordProps): Promise<void> {
+    await prismaService.credentials
+      .update({
+        where: {
+          id: input.id,
+          updatedAt: {
+            lt: input.tokenActivatedAt as Date,
+          },
+        },
+        data: {
+          password: input.password,
+        },
+      })
+      .catch((error) => handleErrors(error));
+
+    return;
+  },
 };

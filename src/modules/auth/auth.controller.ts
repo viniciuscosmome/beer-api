@@ -3,6 +3,7 @@ import {
   SignUpEntity,
   SignInEntity,
   ForgotPasswordEntity,
+  SetPasswordEntity,
 } from './auth.entity';
 import { authService } from './auth.service';
 
@@ -40,13 +41,30 @@ export const authController = {
     const encodedToken = await authService.forgotPassword(email);
 
     if (encodedToken) {
+      console.log('\n------');
       console.log('Send mail to:', email);
       console.log('encodedToken:', encodedToken);
+      console.log('------\n');
     }
 
-    res.status(200).json({
+    res.status(202).json({
       message:
         'Nós te enviaremos um e-mail com um link para a definição de uma nova senha.',
+    });
+  },
+
+  async setPassword(req: Request, res: Response) {
+    const { id, notBefore } = req.verifiedCredentials as iJwtProps;
+    const { password } = SetPasswordEntity.parse(req.body);
+
+    await authService.processTheNewPassword({
+      id,
+      password,
+      tokenActivatedAt: notBefore as number,
+    });
+
+    return res.status(200).json({
+      message: 'Sua senha foi alterada com sucesso!',
     });
   },
 };
