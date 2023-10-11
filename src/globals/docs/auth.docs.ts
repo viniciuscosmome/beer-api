@@ -332,10 +332,6 @@ export const authSchemas = {
         type: 'string',
         example: 'strongW#3',
       },
-      remember: {
-        type: 'boolean',
-        example: false,
-      },
     },
   },
   'auth:sign-in:output': {
