@@ -22,6 +22,8 @@ export const authorization = (subject: iTokensSubject) => {
     req.verifiedCredentials = {
       id: response.id,
       roleLevel: response.roleLevel,
+      issuedAt: response.iat,
+      notBefore: response.nbf,
       jwtid: response.jti,
     };
 
