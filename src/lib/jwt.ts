@@ -48,6 +48,7 @@ export const genJwtToken = (
   }
 
   if (subject === 'FORGOT_PASSWORD') {
+    signOptions.notBefore = '7s';
     signOptions.expiresIn = '5m';
   }
 
