@@ -8,6 +8,11 @@ routes.post('/auth/sign-up', authController.signUp);
 routes.post('/auth/sign-in', authController.signIn);
 routes.post('/auth/refresh', authorization('REFRESH'), authController.refresh);
 routes.post('/auth/forgot-password', authController.forgotPassword);
+routes.put(
+  '/auth/set-password',
+  authorization('FORGOT_PASSWORD'),
+  authController.setPassword,
+);
 
 routes.get('/', generalController.home);
 routes.all('*', generalController.all);
