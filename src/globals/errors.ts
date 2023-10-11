@@ -2,7 +2,8 @@ import { Prisma } from '@prisma/client';
 import { IS_PRODUCTION_ENV } from './constants';
 import {
   InternalServerErrorException,
-  UniqueConstraintFailedException,
+  P2002Exception,
+  P2025Exception,
 } from './exceptions';
 import {
   JsonWebTokenError,
@@ -20,7 +21,9 @@ const handlePrismaErrors = (error: Prisma.PrismaClientKnownRequestError) => {
 
   switch (error.code) {
     case 'P2002':
-      throw new UniqueConstraintFailedException(target[0]);
+      throw new P2002Exception(target[0]);
+    case 'P2025':
+      throw new P2025Exception();
   }
 };
 
