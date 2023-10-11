@@ -4,7 +4,7 @@ import { tokenPayload } from './auth.stubs';
 
 describe('Authentication Services', () => {
   describe('Happy', () => {
-    it('Create session tokens', async () => {
+    it('Generates access and renewal tokens', async () => {
       const { accessToken, refreshToken } =
         await authService.createSessionTokens(tokenPayload);
 
