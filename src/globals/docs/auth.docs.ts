@@ -173,6 +173,50 @@ export const authPaths = {
       },
     },
   },
+  '/auth/forgot-password': {
+    post: {
+      tags: ['Recovery access'],
+      summary: 'Cria um token para permitir a definição de uma nova senha.',
+      requestBody: {
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/auth:forgot-password:input',
+            },
+          },
+        },
+      },
+      responses: {
+        '202': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/auth:forgot-password:output',
+              },
+            },
+          },
+        },
+        '400': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$400',
+              },
+            },
+          },
+        },
+        '500': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$500',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };
 
 export const authSchemas = {
@@ -254,6 +298,25 @@ export const authSchemas = {
       },
       refreshToken: {
         type: 'string',
+      },
+    },
+  },
+  'auth:forgot-password:input': {
+    type: 'object',
+    properties: {
+      email: {
+        type: 'string',
+        example: 'email@example.com',
+      },
+    },
+  },
+  'auth:forgot-password:output': {
+    type: 'object',
+    properties: {
+      message: {
+        type: 'string',
+        example:
+          'Nós te enviaremos um e-mail com um link para a definição de uma nova senha',
       },
     },
   },
