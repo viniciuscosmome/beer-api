@@ -217,6 +217,73 @@ export const authPaths = {
       },
     },
   },
+  '/auth/set-password': {
+    put: {
+      tags: ['Recovery access'],
+      summary: 'Define uma nova senha de acesso.',
+      security: [
+        {
+          BearerSetPassword: [],
+        },
+      ],
+      requestBody: {
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/components/schemas/auth:set-password:input',
+            },
+          },
+        },
+      },
+      responses: {
+        '200': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/auth:set-password:output',
+              },
+            },
+          },
+        },
+        '400': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$400',
+              },
+            },
+          },
+        },
+        '401': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$401',
+              },
+            },
+          },
+        },
+        '422': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$422',
+              },
+            },
+          },
+        },
+        '500': {
+          content: {
+            'application/json': {
+              schema: {
+                $ref: '#/components/schemas/$500',
+              },
+            },
+          },
+        },
+      },
+    },
+  },
 };
 
 export const authSchemas = {
@@ -317,6 +384,24 @@ export const authSchemas = {
         type: 'string',
         example:
           'Nós te enviaremos um e-mail com um link para a definição de uma nova senha',
+      },
+    },
+  },
+  'auth:set-password:input': {
+    type: 'object',
+    properties: {
+      password: {
+        type: 'string',
+        example: '_strongW#3',
+      },
+    },
+  },
+  'auth:set-password:output': {
+    type: 'object',
+    properties: {
+      message: {
+        type: 'string',
+        example: 'Sua senha foi alterada com sucesso!',
       },
     },
   },

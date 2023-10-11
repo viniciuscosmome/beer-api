@@ -51,6 +51,15 @@ export const docs = {
         description:
           'Use o `refreshToken`, ele é obtido ao realizar o `sign-in`.',
       },
+      BearerSetPassword: {
+        type: 'http',
+        scheme: 'bearer',
+        bearerFormat: 'JWT',
+        name: 'authorization',
+        in: 'header',
+        description:
+          'Use o `recoveryToken`, ele é obtido no link enviado para o e-mail.',
+      },
     },
   },
 };
