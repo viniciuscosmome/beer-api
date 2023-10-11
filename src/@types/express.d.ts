@@ -3,7 +3,9 @@ declare namespace Express {
     verifiedCredentials?: {
       id: string;
       roleLevel: string;
-      jwtid?: string;
+      issuedAt?: number | undefined;
+      notBefore?: number | undefined;
+      jwtid?: string | undefined;
     };
   }
 }

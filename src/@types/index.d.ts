@@ -36,6 +36,19 @@ declare type iFindCredential = iAccountInfo & {
 };
 
 declare type iJwtProps = iAccountInfo & {
-  jti?: string;
-  jwtid?: string;
+  sub?: string | undefined;
+  exp?: number | undefined;
+  iat?: number | undefined;
+  jti?: string | undefined;
+  nbf?: number | undefined;
+  jwtid?: string | undefined;
+  subject?: string | undefined;
+  expiresIn?: string | number | undefined;
+  notBefore?: string | number | undefined;
+};
+
+declare type iUpdatePasswordProps = {
+  id: string;
+  password: string;
+  tokenActivatedAt: Date | number;
 };
