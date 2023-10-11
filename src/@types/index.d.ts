@@ -18,7 +18,6 @@ declare type iSignUpInput = {
 declare type iSignInInput = {
   email: string;
   password: string;
-  remember: boolean;
 };
 
 declare type iSessionProps = {
