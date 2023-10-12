@@ -17,3 +17,13 @@ export const checkIfAnyIDIsOutOfLimit = (param: string) => {
 
   return !IDsOutOfLimit.length;
 };
+
+export const checkBrewedDateFormat = (date: string) => {
+  if (!date) return false;
+
+  const [month, year] = date.split('-').map((value) => Number(value));
+  const validMonth = month > 0 && month < 13;
+  const validYear = year > 0 && year < 2500;
+
+  return validMonth && validYear;
+};
