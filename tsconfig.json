@@ -106,7 +106,8 @@
     "src/**/*",
   ],
   "files": [
-    "src/@types/index.d.ts",
-    "src/@types/express.d.ts"
+    "src/@types/api/auth.d.ts",
+    "src/@types/api/beers.d.ts",
+    "src/@types/lib/express.d.ts"
   ]
 }
