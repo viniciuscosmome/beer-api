@@ -16,3 +16,9 @@ export const APP_TITLE = 'Beer API';
 export const APP_LICENSE = 'MIT License';
 export const APP_LICENSE_URL =
   'https://github.com/viniciuscosmome/beer-api/blob/main/LICENSE';
+
+export const MAIL_FROM = process.env.MAIL_FROM as string;
+export const MAIL_HOST = process.env.MAIL_HOST as string;
+export const MAIL_PORT = Number(process.env.MAIL_PORT) as number;
+export const MAIL_USER = process.env.MAIL_USER as string;
+export const MAIL_PASS = process.env.MAIL_PASS as string;
