@@ -18,7 +18,7 @@ export const checkIfAnyIDIsOutOfLimit = (param: string) => {
   return !IDsOutOfLimit.length;
 };
 
-export const checkBrewedDateFormat = (date: string) => {
+export const checkBrewedDateRange = (date: string) => {
   if (!date) return false;
 
   const [month, year] = date.split('-').map((value) => Number(value));
