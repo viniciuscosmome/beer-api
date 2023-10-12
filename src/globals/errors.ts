@@ -15,6 +15,7 @@ import {
   TokenExpiredException,
   TokenIsNotActivatedException,
 } from './exceptions';
+import { AxiosError } from 'axios';
 
 const handlePrismaErrors = (error: Prisma.PrismaClientKnownRequestError) => {
   const target = (error.meta?.target as Array<string>) || ['unknow_meta'];
@@ -39,6 +40,12 @@ const handleJWTErrors = (error: JsonWebTokenError) => {
   throw new InvalidTokenException();
 };
 
+const handleAxiosErrors = () => {
+  // ! Adicionar um logger para registrar os erros do axios
+  console.error('Send to logger: [AxiosError]');
+  return;
+};
+
 export const handleErrors = (error: unknown) => {
   if (error instanceof Prisma.PrismaClientKnownRequestError) {
     handlePrismaErrors(error);
@@ -46,6 +53,10 @@ export const handleErrors = (error: unknown) => {
 
   if (error instanceof JsonWebTokenError) {
     handleJWTErrors(error);
+  }
+
+  if (error instanceof AxiosError) {
+    return handleAxiosErrors();
   }
 
   if (!IS_PRODUCTION_ENV) {
