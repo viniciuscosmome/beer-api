@@ -40,9 +40,12 @@ const handleJWTErrors = (error: JsonWebTokenError) => {
   throw new InvalidTokenException();
 };
 
-const handleAxiosErrors = () => {
+const handleAxiosErrors = (error: unknown) => {
   // ! Adicionar um logger para registrar os erros do axios
-  console.error('Send to logger: [AxiosError]');
+  console.info('------------------------------------------');
+  console.info('Send to logger: [AxiosError]\n');
+  console.info(error);
+  console.info('------------------------------------------');
   return;
 };
 
@@ -56,7 +59,7 @@ export const handleErrors = (error: unknown) => {
   }
 
   if (error instanceof AxiosError) {
-    return handleAxiosErrors();
+    return handleAxiosErrors(error);
   }
 
   if (!IS_PRODUCTION_ENV) {
