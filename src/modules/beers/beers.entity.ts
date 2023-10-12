@@ -24,6 +24,7 @@ export const BasicSearchEntity = z.object({
 
 export const AdvancedSearchEntity = z.object({
   page: z.coerce.number().optional(),
+  per_page: z.coerce.number().min(1).max(80).optional(),
   abv_gt: z.coerce.number().optional(),
   abv_lt: z.coerce.number().optional(),
   ibu_gt: z.coerce.number().optional(),

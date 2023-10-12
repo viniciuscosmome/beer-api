@@ -1,5 +1,6 @@
 declare type iAdvancedFilters = {
   page?: number | undefined;
+  per_page?: number | undefined;
   abv_gt?: number | undefined;
   abv_lt?: number | undefined;
   ibu_gt?: number | undefined;
