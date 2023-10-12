@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import { authController, generalController } from '../modules';
-import { authorization } from '../middlewares/authorization';
-import { beersController } from '../modules/beers/beers.controller';
+import { authController, beersController, generalController } from './modules';
+import { authorization } from './middlewares/authorization';
 
 export const routes = Router();
 
