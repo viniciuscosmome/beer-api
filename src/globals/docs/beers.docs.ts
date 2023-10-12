@@ -25,7 +25,7 @@ export const beersPaths = {
           content: {
             'application/json': {
               schema: {
-                $ref: '#/components/schemas/beers:filter:output',
+                $ref: '#/components/schemas/beers:output',
               },
             },
           },
@@ -63,9 +63,12 @@ export const beersPaths = {
 };
 
 export const beersSchemas = {
-  'beers:filter:output': {
+  'beers:output': {
     type: 'object',
     properties: {
+      length: {
+        type: 'number',
+      },
       beers: {
         type: 'array',
         items: {
