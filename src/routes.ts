@@ -14,6 +14,7 @@ routes.put(
   authController.setPassword,
 );
 
+routes.get('/beers', authorization('ACCESS'), beersController.findManyBeers);
 routes.get(
   '/beers/:filter',
   authorization('ACCESS'),
