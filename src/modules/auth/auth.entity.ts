@@ -5,7 +5,9 @@ import { z } from 'zod';
 
 export const SignUpEntity = z.object({
   email: z.string(responses.datatype.string).email(),
-  password: z.string(responses.datatype.string).regex(PASSWORD_REGEX),
+  password: z
+    .string(responses.datatype.string)
+    .regex(PASSWORD_REGEX, responses.custom.password),
   firstName: z.string(responses.datatype.string),
   lastName: z.string(responses.datatype.string),
   birthdate: z.coerce

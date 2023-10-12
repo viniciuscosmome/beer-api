@@ -34,6 +34,10 @@ export const responses = {
     },
   },
   custom: {
+    password: {
+      message:
+        'Sua senha deve conter no mínimo uma letra maiúscula, uma letra minúscula, um número e um símbolo.',
+    },
     basicSearch: {
       message:
         'Use um ID entre 1 e 325 para buscar uma cerveja específica, ou a palavra "random" para buscar uma cerveja aleatória.',
