@@ -10,6 +10,7 @@ import {
 } from '../../globals/constants';
 import { exceptionsSchemas } from './exceptions.docs';
 import { authPaths, authSchemas } from './auth.docs';
+import { beersPaths, beersSchemas } from './beers.docs';
 
 export const swaggerOptions: SwaggerUiOptions = {
   customSiteTitle: APP_TITLE,
@@ -26,10 +27,12 @@ export const docs = {
   },
   paths: {
     ...authPaths,
+    ...beersPaths,
   },
   components: {
     schemas: {
       ...authSchemas,
+      ...beersSchemas,
       ...exceptionsSchemas,
     },
     securitySchemes: {
