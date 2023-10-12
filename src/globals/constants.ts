@@ -7,6 +7,7 @@ export const PASSWORD_SALT = Number(process.env.PASSWORD_SALT);
 export const SECRET_SESS = process.env.SECRET_SESS as string;
 
 export const PASSWORD_REGEX = /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*\W).*$/;
+export const BASIC_SEARCH_REGEX = /^(random|\d+)$/;
 
 export const APP_TITLE = 'Beer API';
 export const APP_LICENSE = 'MIT License';
