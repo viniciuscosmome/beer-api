@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { authController, generalController } from '../modules';
 import { authorization } from '../middlewares/authorization';
+import { beersController } from '../modules/beers/beers.controller';
 
 export const routes = Router();
 
@@ -12,6 +13,12 @@ routes.put(
   '/auth/set-password',
   authorization('FORGOT_PASSWORD'),
   authController.setPassword,
+);
+
+routes.get(
+  '/beers/:filter',
+  authorization('ACCESS'),
+  beersController.singleBeer,
 );
 
 routes.get('/', generalController.home);
