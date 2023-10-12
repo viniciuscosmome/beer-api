@@ -2,9 +2,15 @@ export const responses = {
   datatype: {
     string: {
       invalid_type_error: 'O tipo de dado esperado é "string".',
+      required_error: 'O campo é obrigatório.',
+    },
+    date: {
+      invalid_type_error: 'O formato deve ser "YYYY-DD-MM".',
+      required_error: 'O campo é obrigatório.',
     },
     number: {
       invalid_type_error: 'O tipo de dado esperado é "number".',
+      required_error: 'O campo é obrigatório.',
     },
     int: {
       message: 'O número esperado deve ser inteiro, sem casas decimais.',
@@ -19,6 +25,11 @@ export const responses = {
     max(max: number) {
       return {
         message: `Deve ter um valor máximo de ${max}.`,
+      };
+    },
+    minAge(min: number) {
+      return {
+        message: `A idade mínima permitida é ${min} anos.`,
       };
     },
   },
@@ -44,7 +55,7 @@ export const responses = {
         'O formato da lista de IDs esperado é "ID1|ID2|ID3". Separe-os com símbolo "|". Ex: 27|35|56',
     },
     idLimit: {
-      message: 'O ID deve estar entre 1 e 325',
+      message: 'O ID deve estar entre 1 e 325.',
     },
   },
 };
