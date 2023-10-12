@@ -121,19 +121,132 @@ export const beersSchemas = {
       },
       volume: {
         type: 'object',
+        properties: {
+          value: {
+            type: 'number',
+          },
+          unit: {
+            type: 'string',
+          },
+        },
       },
       boil_volume: {
         type: 'object',
+        properties: {
+          value: {
+            type: 'number',
+          },
+          unit: {
+            type: 'string',
+          },
+        },
       },
       method: {
         type: 'object',
+        properties: {
+          mash_temp: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                temp: {
+                  type: 'object',
+                  properties: {
+                    value: {
+                      type: 'number',
+                    },
+                    unit: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+            },
+          },
+          fermentation: {
+            type: 'object',
+            properties: {
+              temp: {
+                type: 'object',
+                properties: {
+                  value: {
+                    type: 'number',
+                  },
+                  unit: {
+                    type: 'string',
+                  },
+                },
+              },
+            },
+          },
+          twist: {
+            type: 'boolean',
+          },
+        },
       },
       ingredients: {
         type: 'object',
+        properties: {
+          malt: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string',
+                },
+                amount: {
+                  type: 'object',
+                  properties: {
+                    value: {
+                      type: 'number',
+                    },
+                    unit: {
+                      type: 'string',
+                    },
+                  },
+                },
+              },
+            },
+          },
+          hops: {
+            type: 'array',
+            items: {
+              type: 'object',
+              properties: {
+                name: {
+                  type: 'string',
+                },
+                amount: {
+                  type: 'object',
+                  properties: {
+                    value: {
+                      type: 'number',
+                    },
+                    unit: {
+                      type: 'string',
+                    },
+                  },
+                },
+                add: {
+                  type: 'string',
+                },
+                attribute: {
+                  type: 'string',
+                },
+              },
+            },
+          },
+          yeast: {
+            type: 'string',
+          },
+        },
       },
       food_pairing: {
         type: 'array',
-        items: {},
+        items: {
+          type: 'string',
+        },
       },
       brewers_tips: {
         type: 'string',
