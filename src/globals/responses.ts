@@ -34,6 +34,9 @@ export const responses = {
     },
   },
   custom: {
+    email: {
+      message: 'O email deve ter um formato válido. Ex: name@example.com',
+    },
     password: {
       message:
         'Sua senha deve conter no mínimo uma letra maiúscula, uma letra minúscula, um número e um símbolo.',

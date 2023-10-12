@@ -4,7 +4,7 @@ import { ageLimit } from '../../globals/utilities';
 import { z } from 'zod';
 
 export const SignUpEntity = z.object({
-  email: z.string(responses.datatype.string).email(),
+  email: z.string(responses.datatype.string).email(responses.custom.email),
   password: z
     .string(responses.datatype.string)
     .regex(PASSWORD_REGEX, responses.custom.password),
