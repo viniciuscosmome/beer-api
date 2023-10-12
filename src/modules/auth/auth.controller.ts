@@ -6,6 +6,8 @@ import {
   SetPasswordEntity,
 } from './auth.entity';
 import { authService } from './auth.service';
+import { MailService } from '../../lib/nodemailer';
+import { IS_PRODUCTION_ENV } from '../../globals/constants';
 
 export const authController = {
   async signUp(req: Request, res: Response) {
@@ -38,18 +40,23 @@ export const authController = {
 
   async forgotPassword(req: Request, res: Response) {
     const { email } = ForgotPasswordEntity.parse(req.body);
-    const encodedToken = await authService.forgotPassword(email);
+    const recoveryToken = await authService.forgotPassword(email);
+    const message =
+      'Nós te enviaremos um e-mail com um link para a definição de uma nova senha.';
 
-    if (encodedToken) {
-      console.log('\n------');
-      console.log('Send mail to:', email);
-      console.log('encodedToken:', encodedToken);
-      console.log('------\n');
+    if (recoveryToken) {
+      await MailService.recoveryPassword(email, recoveryToken);
     }
 
-    res.status(202).json({
-      message:
-        'Nós te enviaremos um e-mail com um link para a definição de uma nova senha.',
+    if (!IS_PRODUCTION_ENV) {
+      return res.status(202).json({
+        message,
+        recoveryTokenInTestEnvironment: recoveryToken,
+      });
+    }
+
+    return res.status(202).json({
+      message,
     });
   },
 
