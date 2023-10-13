@@ -25,21 +25,22 @@ Ferramentas usadas
 1. [Requisitos](#requisitos)
 1. [Fork e Clone](#fork-e-clone)
 1. [Configuração do ambiente](#configuração-do-ambiente)
-1. [Instalando as dependências](#instalando-as-dependências)
+1. [Baixando as dependências](#baixando-as-dependências)
+1. [Migrações da base de dados](#migrações-da-base-de-dados)
 1. [Executando a API em desenvolvimento](#executado-a-api-em-desenvolvimento)
-1. [Executando a API em produção](#executanndo-a-api-em-produção)
+1. [Executando a API em produção](#executando-a-api-em-produção)
 1. [Outros comandos](#outros-comandos)
 
 ## Requisitos
 
-- Node.js v18.x\
-  Esta versão ou uma mais recente
+- Node.js v18.17.1\
+  Esta versão do node ou uma mais recente.
 - Mailtrap\
-  Ou outro serviço que permita testar o envio de e-mails SMTP
+  Um serviço que permita testar o envio de e-mails SMTP.
 
 ## Fork e Clone
 
-Faça um fork deste repositório e depois o clone em uma pasta de sua escolha, no seu computador (repositório local).
+Faça um fork deste repositório e depois um clone desse fork em uma pasta no seu computador.
 
 **_Comando para clonar um repositório_**
 
@@ -53,7 +54,7 @@ git clone https://github.com/viniciuscosmome/beer-api.git
 Antes de executar a API você deve realizar algumas configurações
 
 1. **Variáveis de ambiente:**\
-   Crie um arquivo na raiz do repositório chamado `.env`. Além da tabela abaixo, você encontrará um arquivo já criado chamado `example.env`, na raiz do projeto, pode usá-lo de base.
+   Crie um arquivo na raiz do repositório chamado `.env`. Além da tabela abaixo, você encontrará um arquivo já criado chamado `example.env`, está na raiz do projeto e pode ser usado como base.
 
 | Variável      | Tipo     | Descrição                                          |
 | ------------- | -------- | -------------------------------------------------- |
@@ -67,7 +68,7 @@ Antes de executar a API você deve realizar algumas configurações
 | MAIL_USER     | `string` | Usuário disponibilizado pelo seu serviço de e-mail |
 | MAIL_PASS     | `string` | Senha disponibilizado pelo seu serviço de e-mail   |
 
-## Instalando as dependências
+## Baixando as dependências
 
 Use o comando abaixo para instalar todas as dependências do projeto
 
@@ -77,47 +78,60 @@ yarn install
 
 ## Migrações da base de dados
 
-Use o seguinte comado para executar as migrações da base de dados.
+Use o seguinte comado para executar as migrações da base de dados
 
 ```bash
-yarn prisma:setup
+yarn prisma:mig:dev
+# ou
+npx prisma migrate dev
 ```
 
-Execute a seed da base de dados para criar campos necessários para a aplicação.
+Execute a seed da base de dados para criar campos necessários para a aplicação
 
 ```bash
-yarn prism:seed
+yarn prisma:seed
+# ou
+npx prisma db seed
 ```
 
 ## Executado a API em desenvolvimento
 
-O comando abaixa inicia o servidor no ambiente de desenvolimento
+O comando abaixo inicia o servidor no ambiente de desenvolvimento
 
 ```bash
 yarn start
 ```
 
-O comando abaixa inicia o servidor no ambiente de desenvolimento no modo observador, ele reinicia assim que detecta uma mudança em algum arquivo.
+O comando abaixo inicia o servidor no ambiente de desenvolvimento, ele reinicia assim que detecta uma mudança em algum arquivo
 
 ```bash
 yarn start:dev
 ```
 
-## Executanndo a API em produção
+## Executando a API em produção
 
-Gerando o build de produção
+Compilando para o uso em produção
 
 ```bash
 yarn build
 ```
 
-Gerando o build de produção
+Executando migrações para o uso em produção
+
+```bash
+yarn prisma:mig:prod
+# ou
+npx prisma migrate deploy
+```
+
+Executando em produção
 
 ```bash
 yarn start:prod
 ```
 
-> Lembre-se de cofigurar as variáveis de ambiete para usar em produção.
+> [!note]\
+> Lembre-se de cofigurar as variáveis de ambiente para usar em produção.
 
 ## Outros comandos
 
@@ -149,18 +163,13 @@ yarn format
     <tr>
       <td align=center>
         <a href="https://github.com/viniciuscosmome">
-          <img
-            width="125"
-            src="https://avatars.githubusercontent.com/u/48590313?v=4"
-            style="max-width:100%;border-radius:50%;border:3px solid rgb(15, 110, 232);">
+          <img width="125" src="https://avatars.githubusercontent.com/u/48590313?v=4">
         </a>
       </td>
     </tr>
     <tr>
       <td align=center>
-        <a
-          href="https://github.com/viniciuscosmome"
-          style="color: rgb(15, 110, 232);">
+        <a href="https://github.com/viniciuscosmome">
           <strong>Cosmo</strong>
         </a>
       </td>
