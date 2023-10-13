@@ -8,7 +8,8 @@
     "lint": "eslint src/**/*.ts",
     "lint:fix": "eslint src/**/*.ts --fix",
     "test": "vitest",
-    "prisma:setup": "npx prisma migrate dev",
+    "prisma:mig:prod": "npx prisma migrate deploy",
+    "prisma:mig:dev": "npx prisma migrate dev",
     "prisma:seed": "npx prisma db seed"
   },
   "dependencies": {
