@@ -2,9 +2,6 @@
 
 ![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=blue&color=blue)
 ![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=blue&color=blue)
-
-Ferramentas usadas
-
 ![Tool](https://img.shields.io/badge/-Express-white?logo=Express&logoColor=black)
 ![Tool](https://img.shields.io/badge/-Axios-white?logo=axios&logoColor=black)
 ![Tool](https://img.shields.io/badge/-Zod-white?logo=zod&logoColor=black)
@@ -18,9 +15,19 @@ Ferramentas usadas
 ![Aux](https://img.shields.io/badge/-Git-white?logo=git&logoColor=black)
 ![Aux](https://img.shields.io/badge/-Node-white?logo=Node.js&logoColor=black)
 
+A **_Beer API_** realiza uma busca por cervejas na api pública [**_Punk API_**](https://punkapi.com/). Antes de ter acesso aos recursos de busca por cervejas da Punk API, você deve se cadastrar na Beer API informando alguns dados de acesso (nome, sobrenome, email, senha, e data de nascimento).
+
+A **_Beer API_** permite usar filtros básicos para a busca de uma única cerveja, ou uma busca mais detalhada que tráz uma ou mais cervejas correspondentes aos filtros fornecidos.
+
 ---
 
-### Sumário
+### Sumário da rotas
+
+1. [Autenticação](#autenticação)
+1. [Recuperar acesso](#recuperar-acesso)
+1. [Buscar cervejas](#buscar-cervejas)
+
+### Sumário da instalação e execução
 
 1. [Requisitos](#requisitos)
 1. [Fork e Clone](#fork-e-clone)
@@ -30,6 +37,35 @@ Ferramentas usadas
 1. [Executando a API em desenvolvimento](#executado-a-api-em-desenvolvimento)
 1. [Executando a API em produção](#executando-a-api-em-produção)
 1. [Outros comandos](#outros-comandos)
+
+# Rotas
+
+## Autenticação
+
+| Caminho       | Método | Descrição                 |
+| ------------- | ------ | ------------------------- |
+| /auth/sign-up | `POST` | Cria conta                |
+| /auth/sign-in | `POST` | Acessa conta              |
+| /auth/refresh | `POST` | Atualiza chaves de sessão |
+
+## Recuperar acesso
+
+| Caminho               | Método | Descrição                           |
+| --------------------- | ------ | ----------------------------------- |
+| /auth/forgot-password | `POST` | Pedir chave para definir nova senha |
+| /auth/set-password    | `PUT`  | Definir nova senha                  |
+
+## Buscar cervejas
+
+| Caminho         | Método | Descrição                                  |
+| --------------- | ------ | ------------------------------------------ |
+| /beers          | `GET`  | Usar filtros mais avançados                |
+| /beers/{filter} | `GET`  | Usa filtro simples para buscar uma cerveja |
+
+> [!note]\
+> Você pode encontrar mais detalhes sobre as rotas e seus parêmetros ao executar a **_Beer API_**
+
+# Instalação e execução
 
 ## Requisitos
 
