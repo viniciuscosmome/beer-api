@@ -46,13 +46,13 @@ A Beer API oferece duas opções de busca: básica e detalhada. A busca básica 
 
 ---
 
-### Sumário da rotas
+### Sumário: Caminhos
 
 1. [Autenticação](#autenticação)
 1. [Recuperar acesso](#recuperar-acesso)
 1. [Buscar cervejas](#buscar-cervejas)
 
-### Sumário da instalação e execução
+### Sumário: Instalação e execução
 
 1. [Requisitos](#requisitos)
 1. [Fork e Clone](#fork-e-clone)
@@ -63,7 +63,7 @@ A Beer API oferece duas opções de busca: básica e detalhada. A busca básica 
 1. [Executando a API em produção](#executando-a-api-em-produção)
 1. [Outros comandos](#outros-comandos)
 
-# Rotas
+# Caminhos
 
 ## Autenticação
 
