@@ -30,7 +30,7 @@ A Beer API oferece duas opções de busca: básica e detalhada. A busca básica 
 - [x] Controle de acesso as rotas protegidas
 - [x] Busca por cervejas aleatórias
 - [x] Busca por cervejas pelo ID
-- [x] Busca por cervejas confiltros avançados
+- [x] Busca por cervejas com filtros avançados
   * Páginação
   * Itens por página
   * ABV (maior que, menor que)
