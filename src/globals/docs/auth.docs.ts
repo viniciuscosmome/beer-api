@@ -1,7 +1,7 @@
 export const authPaths = {
   '/auth/sign-up': {
     post: {
-      tags: ['Authentication'],
+      tags: ['Autenticação'],
       summary: 'Cria uma conta se o e-mail ainda não foi usado.',
       requestBody: {
         content: {
@@ -63,7 +63,7 @@ export const authPaths = {
   },
   '/auth/sign-in': {
     post: {
-      tags: ['Authentication'],
+      tags: ['Autenticação'],
       summary: 'Acessa a conta e retorna as chaves de acesso.',
       requestBody: {
         content: {
@@ -125,7 +125,7 @@ export const authPaths = {
   },
   '/auth/refresh': {
     post: {
-      tags: ['Authentication'],
+      tags: ['Autenticação'],
       summary: 'Atualiza as chaves de acesso.',
       security: [
         {
@@ -175,7 +175,7 @@ export const authPaths = {
   },
   '/auth/forgot-password': {
     post: {
-      tags: ['Recovery access'],
+      tags: ['Recuperar acesso'],
       summary: 'Cria um token para permitir a definição de uma nova senha.',
       requestBody: {
         content: {
@@ -219,7 +219,7 @@ export const authPaths = {
   },
   '/auth/set-password': {
     put: {
-      tags: ['Recovery access'],
+      tags: ['Recuperar acesso'],
       summary: 'Define uma nova senha de acesso.',
       security: [
         {

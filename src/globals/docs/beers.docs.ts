@@ -11,7 +11,7 @@ const queryParam = (name: string, datatype: string, description: string) => ({
 export const beersPaths = {
   '/beers': {
     get: {
-      tags: ['Beers'],
+      tags: ['Buscar cervejas'],
       summary: 'Busca cerveja usando filtros. Retorna no máximo 50 por página.',
       security: [
         {
@@ -138,7 +138,7 @@ export const beersPaths = {
   },
   '/beers/{filter}': {
     get: {
-      tags: ['Beers'],
+      tags: ['Buscar cervejas'],
       summary: 'Busca uma cerveja aleatória, ou específica.',
       security: [
         {
