@@ -1,4 +1,4 @@
-# Beer API
+# Beer API 🍺
 
 ![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=FFAA2A&color=FFAA2A)
 ![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=FFAA2A&color=FFAA2A)
@@ -17,7 +17,7 @@
 
 A Beer API é uma API que permite buscar cervejas na [Punk API](https://punkapi.com/), uma API pública. Para usar a Beer API, é necessário se cadastrar e informar alguns dados de acesso, como nome, sobrenome, e-mail, senha e data de nascimento.
 
-A Beer API oferece duas opções de busca: básica e detalhada. A busca básica permite buscar uma única cerveja aleatória ou pelo ID. A busca detalhada permite buscar uma ou mais cervejas por diversos critérios, como data de fabricação, ABV, IBU e EBC.
+A Beer API oferece duas opções de busca: básica e detalhada. A busca básica permite buscar uma cerveja aleatória, ou usando o ID. A busca detalhada permite buscar uma ou mais cervejas por diversos critérios, como data de fabricação, ABV, IBU, EBC, etc.
 
 **_Funcionalidades_**
 
