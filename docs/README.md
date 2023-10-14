@@ -1,33 +1,58 @@
 # Beer API
 
-![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=blue&color=blue)
-![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=blue&color=blue)
-![Tool](https://img.shields.io/badge/-Express-white?logo=Express&logoColor=black)
-![Tool](https://img.shields.io/badge/-Axios-white?logo=axios&logoColor=black)
-![Tool](https://img.shields.io/badge/-Zod-white?logo=zod&logoColor=black)
-![Database](https://img.shields.io/badge/-SQLite-white?logo=sqlite&logoColor=black)
-![Database](https://img.shields.io/badge/-Prisma-white?logo=prisma&logoColor=black)
-![aux](https://img.shields.io/badge/-TypeScript-white?logo=typescript&logoColor=black)
-![Aux](https://img.shields.io/badge/-Vitest-white?logo=vitest&logoColor=black)
-![Aux](https://img.shields.io/badge/-Swagger-white?logo=swagger&logoColor=black)
-![Aux](https://img.shields.io/badge/-Eslint-white?logo=eslint&logoColor=black)
-![Aux](https://img.shields.io/badge/-Prettier-white?logo=prettier&logoColor=black)
-![Aux](https://img.shields.io/badge/-Git-white?logo=git&logoColor=black)
-![Aux](https://img.shields.io/badge/-Node-white?logo=Node.js&logoColor=black)
+![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=FFAA2A&color=FFAA2A)
+![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=FFAA2A&color=FFAA2A)
+![Tool](https://img.shields.io/badge/-Express-1E1E21?logo=Express&logoColor=FFAA2A)
+![Tool](https://img.shields.io/badge/-Axios-1E1E21?logo=axios&logoColor=FFAA2A)
+![Tool](https://img.shields.io/badge/-Zod-1E1E21?logo=zod&logoColor=FFAA2A)
+![Database](https://img.shields.io/badge/-SQLite-1E1E21?logo=sqlite&logoColor=FFAA2A)
+![Database](https://img.shields.io/badge/-Prisma-1E1E21?logo=prisma&logoColor=FFAA2A)
+![aux](https://img.shields.io/badge/-TypeScript-1E1E21?logo=typescript&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Vitest-1E1E21?logo=vitest&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Swagger-1E1E21?logo=swagger&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Eslint-1E1E21?logo=eslint&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Prettier-1E1E21?logo=prettier&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Git-1E1E21?logo=git&logoColor=FFAA2A)
+![Aux](https://img.shields.io/badge/-Node-1E1E21?logo=Node.js&logoColor=FFAA2A)
 
 A Beer API é uma API que permite buscar cervejas na [Punk API](https://punkapi.com/), uma API pública. Para usar a Beer API, é necessário se cadastrar e informar alguns dados de acesso, como nome, sobrenome, e-mail, senha e data de nascimento.
 
 A Beer API oferece duas opções de busca: básica e detalhada. A busca básica permite buscar uma única cerveja aleatória ou pelo ID. A busca detalhada permite buscar uma ou mais cervejas por diversos critérios, como data de fabricação, ABV, IBU e EBC.
 
+**_Funcionalidades_**
+
+- [x] Criar conta
+- [x] Acessar conta
+  * Atualiza a sessão
+- [x] Recuperar conta
+  * Pedir redefinição
+  * Definir nova senha
+- [x] Controle de acesso as rotas protegidas
+- [x] Busca por cervejas aleatórias
+- [x] Busca por cervejas pelo ID
+- [x] Busca por cervejas com filtros avançados
+  * Páginação
+  * Itens por página
+  * ABV (maior que, menor que)
+  * IBU (maior que, menor que)
+  * EBC (maior que, menor que)
+  * Nome da cerveja
+  * Levedura (yeast)
+  * Fábricação (anteriror à, posterior à)
+  * Amargor (hops)
+  * Malte (malt)
+  * Comidas que combinam (food)
+  * IDs
+
 ---
 
-### Sumário da rotas
+### Sumário: Caminhos
 
 1. [Autenticação](#autenticação)
 1. [Recuperar acesso](#recuperar-acesso)
 1. [Buscar cervejas](#buscar-cervejas)
 
-### Sumário da instalação e execução
+### Sumário: Instalação e execução
 
 1. [Requisitos](#requisitos)
 1. [Fork e Clone](#fork-e-clone)
@@ -38,7 +63,7 @@ A Beer API oferece duas opções de busca: básica e detalhada. A busca básica 
 1. [Executando a API em produção](#executando-a-api-em-produção)
 1. [Outros comandos](#outros-comandos)
 
-# Rotas
+# Caminhos
 
 ## Autenticação
 
