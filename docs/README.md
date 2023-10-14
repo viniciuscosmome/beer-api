@@ -19,6 +19,31 @@ A Beer API é uma API que permite buscar cervejas na [Punk API](https://punkapi.
 
 A Beer API oferece duas opções de busca: básica e detalhada. A busca básica permite buscar uma única cerveja aleatória ou pelo ID. A busca detalhada permite buscar uma ou mais cervejas por diversos critérios, como data de fabricação, ABV, IBU e EBC.
 
+**_Funcionalidades_**
+
+- [x] Criar conta
+- [x] Acessar conta
+  * Atualiza a sessão
+- [x] Recuperar conta
+  * Pedir redefinição
+  * Definir nova senha
+- [x] Controle de acesso as rotas protegidas
+- [x] Busca por cervejas aleatórias
+- [x] Busca por cervejas pelo ID
+- [x] Busca por cervejas confiltros avançados
+  * Páginação
+  * Itens por página
+  * ABV (maior que, menor que)
+  * IBU (maior que, menor que)
+  * EBC (maior que, menor que)
+  * Nome da cerveja
+  * Levedura (yeast)
+  * Fábricação (anteriror à, posterior à)
+  * Amargor (hops)
+  * Malte (malt)
+  * Comidas que combinam (food)
+  * IDs
+
 ---
 
 ### Sumário da rotas
