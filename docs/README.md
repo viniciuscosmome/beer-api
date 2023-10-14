@@ -1,19 +1,19 @@
 # Beer API
 
-![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=blue&color=blue)
-![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=blue&color=blue)
-![Tool](https://img.shields.io/badge/-Express-white?logo=Express&logoColor=black)
-![Tool](https://img.shields.io/badge/-Axios-white?logo=axios&logoColor=black)
-![Tool](https://img.shields.io/badge/-Zod-white?logo=zod&logoColor=black)
-![Database](https://img.shields.io/badge/-SQLite-white?logo=sqlite&logoColor=black)
-![Database](https://img.shields.io/badge/-Prisma-white?logo=prisma&logoColor=black)
-![aux](https://img.shields.io/badge/-TypeScript-white?logo=typescript&logoColor=black)
-![Aux](https://img.shields.io/badge/-Vitest-white?logo=vitest&logoColor=black)
-![Aux](https://img.shields.io/badge/-Swagger-white?logo=swagger&logoColor=black)
-![Aux](https://img.shields.io/badge/-Eslint-white?logo=eslint&logoColor=black)
-![Aux](https://img.shields.io/badge/-Prettier-white?logo=prettier&logoColor=black)
-![Aux](https://img.shields.io/badge/-Git-white?logo=git&logoColor=black)
-![Aux](https://img.shields.io/badge/-Node-white?logo=Node.js&logoColor=black)
+![version](https://img.shields.io/github/package-json/v/viniciuscosmome/beer-api?labelColor=CB4040&color=CB4040)
+![license](https://img.shields.io/github/license/viniciuscosmome/beer-api?labelColor=CB4040&color=CB4040)
+![Tool](https://img.shields.io/badge/-Express-1E1E21?logo=Express&logoColor=white)
+![Tool](https://img.shields.io/badge/-Axios-1E1E21?logo=axios&logoColor=white)
+![Tool](https://img.shields.io/badge/-Zod-1E1E21?logo=zod&logoColor=white)
+![Database](https://img.shields.io/badge/-SQLite-1E1E21?logo=sqlite&logoColor=white)
+![Database](https://img.shields.io/badge/-Prisma-1E1E21?logo=prisma&logoColor=white)
+![aux](https://img.shields.io/badge/-TypeScript-1E1E21?logo=typescript&logoColor=white)
+![Aux](https://img.shields.io/badge/-Vitest-1E1E21?logo=vitest&logoColor=white)
+![Aux](https://img.shields.io/badge/-Swagger-1E1E21?logo=swagger&logoColor=white)
+![Aux](https://img.shields.io/badge/-Eslint-1E1E21?logo=eslint&logoColor=white)
+![Aux](https://img.shields.io/badge/-Prettier-1E1E21?logo=prettier&logoColor=white)
+![Aux](https://img.shields.io/badge/-Git-1E1E21?logo=git&logoColor=white)
+![Aux](https://img.shields.io/badge/-Node-1E1E21?logo=Node.js&logoColor=white)
 
 A Beer API é uma API que permite buscar cervejas na [Punk API](https://punkapi.com/), uma API pública. Para usar a Beer API, é necessário se cadastrar e informar alguns dados de acesso, como nome, sobrenome, e-mail, senha e data de nascimento.
 
